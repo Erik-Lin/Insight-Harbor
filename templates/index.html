@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INSIGHT HARBOR</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        .search-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .result-container {
+            margin-top: 50px;
+        }
+        .result {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .result h2 {
+            margin-bottom: 5px;
+        }
+        .result p {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <h1>INSIGHT NET Search</h1>
+        <form action="/search" method="post">
+            <input type="text" name="query" maxlength="256" placeholder="请输入搜索关键词">
+            <button type="submit">搜索</button>
+        </form>
+    </div>
+
+    <div class="result-container">
+        <h2>搜索结果：</h2>
+        {% if search_results %}
+            {% for result in search_results %}
+                <div class="result">
+                    <h2><a href="{{ result['link'] }}" target="_blank">{{ result['title'] }}</a></h2>
+                    <p>{{ result['snippet'] }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>没有找到相关结果。</p>
+        {% endif %}
+    </div>
+</body>
+</html>

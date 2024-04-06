@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h2>Search Results</h2>
+    <div id="results">
+        <!-- 这里使用JavaScript动态生成搜索结果 -->
+    </div>
+
+    <script>
+        // 这里使用JavaScript从服务器获取搜索结果并动态生成HTML代码
+        // 假设服务器返回的结果是一个JSON数组
+        var results = [
+            {
+                "title": "Result 1",
+                "link": "https://example.com/result1",
+                "summary": "This is a summary of result 1.",
+                "emotion": "Happy"
+            },
+            {
+                "title": "Result 2",
+                "link": "https://example.com/result2",
+                "summary": "This is a summary of result 2.",
+                "emotion": "Neutral"
+            },
+            // 可能还有更多搜索结果...
+        ];
+
+        var resultsContainer = document.getElementById("results");
+        results.forEach(function(result) {
+            var resultElement = document.createElement("div");
+            resultElement.innerHTML = "<h3><a href='" + result.link + "'>" + result.title + "</a></h3>" +
+                                      "<p><b>Emotion:</b> " + result.emotion + "</p>" +
+                                      "<p><b>Summary:</b> " + result.summary + "</p>";
+            resultsContainer.appendChild(resultElement);
+        });
+    </script>
+</body>
+</html>
